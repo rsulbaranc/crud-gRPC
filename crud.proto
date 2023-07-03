@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 service CrudService {
-    rpc getProduct(Id_product) returns (ReplyProduct) {}
+    //rpc getProduct(Id_product) returns (ReplyProduct) {}
     rpc getProducts(Empty) returns (ReplyProduct) {}
     rpc createProduct(Product) returns (Reply) {}
     rpc UpdateProduct(ProductUpdate) returns (Reply) {}
@@ -10,9 +10,6 @@ service CrudService {
 
 message Empty {}
 
-message Id_product {
-    int32 id = 1;
-}
 message Id_product {
     int32 id = 1;
 }

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node crudServer"
+    "start": "node index.js",
+    "dev": "node crudServer.js"
+
   },
   "keywords": [],
   "author": "",
