@@ -19,7 +19,7 @@ async function getProducts (call, callback)  {
         const res = await pool.query('SELECT * FROM producto');
         console.log(res.rows);
         //pool.end();
-        callback(null, res.rows);
+        callback(res.rows);
     } catch(e) {
         console.log(e);
     }

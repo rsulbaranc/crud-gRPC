@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node crudServer.js"
-
+    "start": "nodemon index.js",
+    "dev": "nodemon crudServer.js",
+    "cli": "nodemon crudCli.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,8 @@
     "@grpc/proto-loader": "^0.7.7",
     "dotenv": "^16.3.1",
     "google-protobuf": "^3.21.2",
+    "minimist": "^1.2.8",
+    "nodemon": "^2.0.22",
     "pg": "^8.11.1"
   }
 }
