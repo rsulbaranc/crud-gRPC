@@ -25,8 +25,23 @@ async function getProducts (call, callback)  {
     }
 };
 
+async function createProduct (call, callback) {
+    try {
+        let querysentence = 'INSERT INTO producto(id, descrip) VALUES($1, $2)'
+        let values = [call.request.id, call.request.descrip]
+        await pool.query(querysentence, values);
+        console.log('Se ejecuto el query exitosamente');
+        callback();
+    } catch (e){
+        console.log(e);
+    }
+}
+
 const server = new grpc.Server();
-server.addService(crudDBService.CrudService.service, { getProducts: getProducts });
+server.addService(crudDBService.CrudService.service, { 
+    getProducts: getProducts,
+    createProduct: createProduct
+});
 server.bindAsync('127.0.0.1:50051', grpc.ServerCredentials.createInsecure(), () => {
     console.log("Server running at http://127.0.0.1:50051");
     server.start();

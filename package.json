@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev": "nodemon crudServer.js",
-    "cli": "nodemon crudCli.js"
+    "start": "node index.js",
+    "server": "nodemon crudServer.js",
+    "cli": "node crudCli.js"
   },
   "keywords": [],
   "author": "",

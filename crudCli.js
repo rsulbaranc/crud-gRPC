@@ -23,7 +23,9 @@ function main() {
 
   const client = new crudDBService.CrudService(target, grpc.credentials.createInsecure());
 
-  client.getProducts({  }, function (err, response) {console.log('Message:', response);});
+  //client.getProducts({  }, function (err, response) {console.log('Message:', response);});
+  client.createProduct({id: 6, descrip: 'prueba desde cli' }, function (err, response) {console.log('Message:', response);});
+
 }
 
 main();
