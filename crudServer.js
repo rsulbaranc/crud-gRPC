@@ -37,10 +37,23 @@ async function createProduct (call, callback) {
     }
 }
 
+async function deleteProduct (call, callback) {
+    try {
+        let querysentence = 'DELETE FROM producto WHERE id = $1'
+        let value = [call.request.id]
+        let res = await pool.query(querysentence, value);
+        console.log('Se elimino el producto con el id: ' + call.request.id + ' exitosamente');
+        callback(res);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 const server = new grpc.Server();
 server.addService(crudDBService.CrudService.service, { 
     getProducts: getProducts,
-    createProduct: createProduct
+    createProduct: createProduct,
+    deleteProduct: deleteProduct
 });
 server.bindAsync('127.0.0.1:50051', grpc.ServerCredentials.createInsecure(), () => {
     console.log("Server running at http://127.0.0.1:50051");
