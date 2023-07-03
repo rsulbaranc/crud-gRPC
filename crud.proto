@@ -15,11 +15,11 @@ message Id_product {
 }
 
 message Reply {
-    bool successful = 1;
+    string message = 1;
 }
 
 message ReplyProduct {
-    string data = 1;
+    string message = 1;
 }
 
 message Product {

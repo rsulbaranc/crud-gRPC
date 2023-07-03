@@ -18,8 +18,8 @@ async function getProducts (call, callback)  {
     try {
         const res = await pool.query('SELECT * FROM producto');
         console.log(res.rows);
-        //pool.end();
-        callback(res.rows);
+        let respuesta = {message: 'Se ejecuto el query'}
+        callback(null, respuesta);
     } catch(e) {
         console.log(e);
     }
@@ -29,9 +29,10 @@ async function createProduct (call, callback) {
     try {
         let querysentence = 'INSERT INTO producto(id, descrip) VALUES($1, $2)'
         let values = [call.request.id, call.request.descrip]
-        await pool.query(querysentence, values);
-        console.log('Se ejecuto el query exitosamente');
-        callback();
+        let res = await pool.query(querysentence, values);
+        console.log('El cliente ejecuto el comando: '+ res.command);
+        let respuesta = {message: call. request.descrip + ' Se ha agregado correctamente a la base de datos'}
+        callback(null, respuesta);
     } catch (e){
         console.log(e);
     }
@@ -42,8 +43,9 @@ async function deleteProduct (call, callback) {
         let querysentence = 'DELETE FROM producto WHERE id = $1'
         let value = [call.request.id]
         let res = await pool.query(querysentence, value);
-        console.log('Se elimino el producto con el id: ' + call.request.id + ' exitosamente');
-        callback(res);
+        console.log('El cliente ejecuto el comando: '+ res.command);
+        let respuesta = {message: ('Se elimino exitosamente el producto con el id: ' + call.request.id)}
+        callback(null, respuesta);
     } catch (e) {
         console.log(e);
     }
@@ -54,8 +56,9 @@ async function updateProduct (call, callback) {
         let querysentence = 'UPDATE producto SET descrip = $1 WHERE descrip = $2'
         let value = [call.request.newDescrip, call.request.oldDescrip]
         let res = await pool.query(querysentence, value);
-        console.log('el nuevo valor de ' + call.request.oldDescrip + ' es: ' + call.request.newDescrip);
-        callback(res);
+        console.log('El cliente ejecuto el comando: '+ res.command);
+        let respuesta = { message: 'El nuevo valor de ' + call.request.oldDescrip + ' ahora es ' + call.request.newDescrip };
+        callback(null, respuesta);
     } catch (e) {
         console.log(e);
     }
