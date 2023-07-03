@@ -25,7 +25,8 @@ function main() {
 
   //client.getProducts({  }, function (err, response) {console.log('Message:', response);});
   //client.createProduct({id: 6, descrip: 'prueba desde cli' }, function (err, response) {console.log('Message:', response);});
-  client.deleteProduct({id: 4 }, function (err, response) {console.log('Message:', response);});
+  //client.deleteProduct({id: 4 }, function (err, response) {console.log('Message:', response);});
+  client.updateProduct({oldDescrip: 'leche', newDescrip: 'arroz' }, function (err, response) {console.log('Message:', response);});
 
 }
 

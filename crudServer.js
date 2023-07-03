@@ -49,11 +49,24 @@ async function deleteProduct (call, callback) {
     }
 }
 
+async function updateProduct (call, callback) {
+    try {
+        let querysentence = 'UPDATE producto SET descrip = $1 WHERE descrip = $2'
+        let value = [call.request.newDescrip, call.request.oldDescrip]
+        let res = await pool.query(querysentence, value);
+        console.log('el nuevo valor de ' + call.request.oldDescrip + ' es: ' + call.request.newDescrip);
+        callback(res);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 const server = new grpc.Server();
 server.addService(crudDBService.CrudService.service, { 
     getProducts: getProducts,
     createProduct: createProduct,
-    deleteProduct: deleteProduct
+    deleteProduct: deleteProduct,
+    updateProduct: updateProduct
 });
 server.bindAsync('127.0.0.1:50051', grpc.ServerCredentials.createInsecure(), () => {
     console.log("Server running at http://127.0.0.1:50051");
