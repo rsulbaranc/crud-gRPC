@@ -18,7 +18,8 @@ async function getProducts (call, callback)  {
     try {
         const res = await pool.query('SELECT * FROM producto');
         console.log(res.rows);
-        let respuesta = {message: 'Se ejecuto el query'}
+        //let respuesta = {message: 'Se ejecuto el query'}
+        let respuesta = {message: JSON.stringify(res.rows)}
         callback(null, respuesta);
     } catch(e) {
         console.log(e);

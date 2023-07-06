@@ -23,10 +23,12 @@ function main() {
 
   const client = new crudDBService.CrudService(target, grpc.credentials.createInsecure());
 
-  client.getProducts({  }, function (err, response) {console.log('Message:', response);});
-  //client.createProduct({id: 3, descrip: 'arroz' }, function (err, response) {console.log('Message:', response);});
-  //client.deleteProduct({id: 2 }, function (err, response) {console.log('Message:', response);});
-  //client.updateProduct({oldDescrip: 'atun', newDescrip: 'sardina' }, function (err, response) {console.log('Message:', response);});
+  client.getProducts({  }, function (err, response) {
+    console.log('Message:', response);
+  });
+  //client.createProduct({id: 4, descrip: 'leche' }, function (err, response) {console.log('Message:', response);});
+  //client.updateProduct({oldDescrip: 'leche', newDescrip: 'pasta' }, function (err, response) {console.log('Message:', response);});
+  //client.deleteProduct({id: 4 }, function (err, response) {console.log('Message:', response);});
 
 }
 

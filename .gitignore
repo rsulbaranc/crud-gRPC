@@ -1,8 +1,10 @@
 # Ignora la carpeta node_modules
 node_modules
 
-# Ignora los archivos relacionados a API keys
+# Ignora las varibables de entorno
 .env
 
 #Ignorar index.js archivo de pruebas
 index.js
+
+app.js

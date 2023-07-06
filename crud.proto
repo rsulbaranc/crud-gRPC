@@ -27,6 +27,10 @@ message Product {
     string descrip = 2;
 }
 
+message Products {
+    repeated Product products = 1;
+}
+
 message ProductUpdate {
     string oldDescrip = 1;
     string newDescrip = 2;
