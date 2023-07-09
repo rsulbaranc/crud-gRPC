@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+service CrudService {
+    //rpc getProduct(Id_product) returns (ReplyProduct) {}
+    rpc getProducts(Empty) returns (ReplyProduct) {}
+    rpc createProduct(Product) returns (Reply) {}
+    rpc updateProduct(ProductUpdate) returns (Reply) {}
+    rpc deleteProduct(Id_product) returns (Reply) {}
+}
+
+message Empty {}
+
+message Id_product {
+    int32 id = 1;
+}
+
+message Reply {
+    string message = 1;
+}
+
+message ReplyProduct {
+    string message = 1;
+}
+
+message Product {
+    int32 id = 1;
+    string descrip = 2;
+}
+
+message Products {
+    repeated Product products = 1;
+}
+
+message ProductUpdate {
+    string oldDescrip = 1;
+    string newDescrip = 2;
+}

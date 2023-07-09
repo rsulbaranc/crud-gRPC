@@ -1,4 +1,4 @@
-const pool = require('./crudDb');
+const pool = require('./db/crudDb');
 const PROTO_PATH = __dirname + '/crud.proto';
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
