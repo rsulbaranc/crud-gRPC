@@ -14,6 +14,7 @@ app.use(express.json()); //soportar datos json
 //Routes
 app.use(require('./routes/index'));
 
+
 // Strating the server
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);

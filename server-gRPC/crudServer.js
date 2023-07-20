@@ -14,6 +14,12 @@ const crudDBService = grpc.loadPackageDefinition(packageDefinition);
 
 pool.connect();
 
+const esperarRetraso = (ms) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  }
+
 async function getProducts (call, callback)  {
     try {
         const res = await pool.query('SELECT * FROM producto');
@@ -41,6 +47,7 @@ async function createProduct (call, callback) {
 
 async function deleteProduct (call, callback) {
     try {
+        await esperarRetraso(10000); // Espera el retraso de 2000 milisegundos (10 segundos)
         let querysentence = 'DELETE FROM producto WHERE id = $1'
         let value = [call.request.id]
         let res = await pool.query(querysentence, value);

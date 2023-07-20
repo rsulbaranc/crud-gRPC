@@ -1,12 +1,16 @@
 const { Router } = require('express');
 const router = Router();
 const { consultProductos, insertPoductos, actualiProducto, borrPoductos } = require('../controllers/grpc-controller');
+const {tiempoMuerto, helloWorld} = require('../controllers/ramdom-controller');
 
 //Routes
 router.post('/create', insertPoductos);
 router.get('/read', consultProductos);
 router.post('/update', actualiProducto);
 router.post('/delete', borrPoductos);
+router.get('/time', tiempoMuerto);
+router.get('/hello', helloWorld);
+
 
 // Ruta worker
 router.get('/api', (req, res) => {
